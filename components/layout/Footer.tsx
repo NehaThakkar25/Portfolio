@@ -5,7 +5,24 @@ export default function Footer() {
   return (
     <footer className="relative z-10 border-t border-white/10 px-[5vw] py-12">
       <div className="flex flex-col items-start justify-between gap-8 md:flex-row md:items-center">
-        <p className="font-serif text-2xl italic text-ink">{profile.name}</p>
+        <Link href="/" aria-label={`${profile.name}, home`} className="text-ink transition-colors hover:text-rouge">
+          <span
+            aria-hidden="true"
+            className="block h-9"
+            style={{
+              aspectRatio: "268 / 59",
+              backgroundColor: "currentColor",
+              maskImage: "url(/logo.svg)",
+              WebkitMaskImage: "url(/logo.svg)",
+              maskRepeat: "no-repeat",
+              WebkitMaskRepeat: "no-repeat",
+              maskPosition: "left center",
+              WebkitMaskPosition: "left center",
+              maskSize: "contain",
+              WebkitMaskSize: "contain",
+            }}
+          />
+        </Link>
 
         <div className="flex flex-wrap gap-6 text-[11px] font-medium uppercase tracking-[0.18em] text-ink/55">
           {profile.socials.map((s) => (

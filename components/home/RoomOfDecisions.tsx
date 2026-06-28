@@ -87,23 +87,27 @@ export default function RoomOfDecisions() {
   const [decision, setDecision] = useState<number | null>(null);
   const [approach, setApproach] = useState<number | null>(null);
   const [leaving, setLeaving] = useState(false);
-  const [dismissed, setDismissed] = useState(false);
+  const [dismissed, setDismissed] = useState(
+    () => typeof window !== "undefined" && sessionStorage.getItem("nt-room-seen") === "1"
+  );
   const glowRef = useRef<HTMLDivElement>(null);
   const cursor = useRef({ gx: 0, gy: 0, tx: 0, ty: 0 });
 
   useEffect(() => {
+    if (dismissed) return; // already seen this session
     document.body.style.overflow = "hidden";
     window.scrollTo(0, 0);
     return () => {
       document.body.style.overflow = "";
     };
-  }, []);
+  }, [dismissed]);
 
   // intro line holds for 3s
   useEffect(() => {
+    if (dismissed) return;
     const t = window.setTimeout(() => setPhase("question"), 3000);
     return () => window.clearTimeout(t);
-  }, []);
+  }, [dismissed]);
 
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
@@ -129,6 +133,7 @@ export default function RoomOfDecisions() {
   }, []);
 
   const enterSite = () => {
+    sessionStorage.setItem("nt-room-seen", "1");
     setLeaving(true);
     window.setTimeout(() => {
       document.body.style.overflow = "";

@@ -32,11 +32,23 @@ export default function Nav() {
           : "border-transparent bg-transparent"
       } ${hidden ? "-translate-y-full" : "translate-y-0"}`}
     >
-      <Link
-        href="/"
-        className="font-sans text-[11px] font-semibold uppercase tracking-[0.3em] text-ink transition-colors hover:text-rouge"
-      >
-        NT
+      <Link href="/" aria-label="Neha Thakkar, home" className="text-ink transition-colors hover:text-rouge">
+        <span
+          aria-hidden="true"
+          className="block h-6 md:h-7"
+          style={{
+            aspectRatio: "268 / 59",
+            backgroundColor: "currentColor",
+            maskImage: "url(/logo.svg)",
+            WebkitMaskImage: "url(/logo.svg)",
+            maskRepeat: "no-repeat",
+            WebkitMaskRepeat: "no-repeat",
+            maskPosition: "left center",
+            WebkitMaskPosition: "left center",
+            maskSize: "contain",
+            WebkitMaskSize: "contain",
+          }}
+        />
       </Link>
 
       <nav className="flex gap-7 text-[11px] font-medium uppercase tracking-[0.22em]">

@@ -23,7 +23,7 @@ const mulish = Mulish({
 });
 
 export const metadata: Metadata = {
-  title: "Neha Thakkar · Experience Designer",
+  title: "Neha Thakkar | Experience Designer",
   description:
     "Neha Thakkar, Experience Designer crafting considered, human-centred digital experiences. Selected work, case studies, and writing.",
 };
