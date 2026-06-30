@@ -248,6 +248,101 @@ export const offerings: Offering[] = [
   },
 ];
 
+export type Post = {
+  slug: string;
+  title: string;
+  excerpt: string;
+  category: string;
+  date: string;
+  readTime: string;
+};
+
+// UI shape for a Read card (adds an optional resolved cover image URL).
+export type ReadCard = Post & { coverUrl?: string };
+
+export const posts: Post[] = [
+  {
+    slug: "designing-for-the-moment-of-doubt",
+    title: "Designing for the moment of doubt",
+    excerpt:
+      "The instant a user hesitates is the most honest feedback a product gives. Here is how I design for it.",
+    category: "Craft",
+    date: "Jun 2026",
+    readTime: "6 min",
+  },
+  {
+    slug: "what-a-design-system-actually-buys-you",
+    title: "What a design system actually buys you",
+    excerpt:
+      "It is not consistency. It is the freedom to stop re-deciding the same thing every single week.",
+    category: "Systems",
+    date: "Apr 2026",
+    readTime: "5 min",
+  },
+  {
+    slug: "the-quiet-power-of-defaults",
+    title: "The quiet power of defaults",
+    excerpt: "Most people never change a setting. The default is the design, so choose it like one.",
+    category: "Craft",
+    date: "Mar 2026",
+    readTime: "4 min",
+  },
+  {
+    slug: "from-engineering-to-design",
+    title: "From engineering to design, and what stuck",
+    excerpt:
+      "Thinking in flows, edge cases, and constraints turned out to be the most useful design training I had.",
+    category: "Career",
+    date: "Jan 2026",
+    readTime: "7 min",
+  },
+  {
+    slug: "usability-test-in-an-afternoon",
+    title: "How I run a usability test in an afternoon",
+    excerpt:
+      "You do not need a lab or a budget. Five people and the right questions will humble any assumption.",
+    category: "Process",
+    date: "Nov 2025",
+    readTime: "5 min",
+  },
+  {
+    slug: "figma-framer-knowing-when-to-switch",
+    title: "Figma, Framer, and knowing when to switch",
+    excerpt:
+      "Every tool quietly pushes you toward a way of thinking. The skill is noticing when it stops serving the work.",
+    category: "Tools",
+    date: "Sep 2025",
+    readTime: "4 min",
+  },
+  {
+    slug: "saying-no-is-a-design-decision",
+    title: "Saying no is a design decision",
+    excerpt:
+      "Every feature you add is a promise. The hardest, best work is often what you choose to leave out.",
+    category: "Process",
+    date: "Jul 2025",
+    readTime: "5 min",
+  },
+  {
+    slug: "microcopy-that-earns-its-place",
+    title: "Microcopy that earns its place",
+    excerpt:
+      "A few honest words can do what an entire onboarding flow cannot. Less explaining is often better designing.",
+    category: "Craft",
+    date: "May 2025",
+    readTime: "4 min",
+  },
+  {
+    slug: "designing-trust-into-a-fintech-wallet",
+    title: "Designing trust into a fintech wallet",
+    excerpt:
+      "When money is involved, every interaction is really about trust. Here is what that meant for Zoop Wallet.",
+    category: "Systems",
+    date: "Feb 2025",
+    readTime: "8 min",
+  },
+];
+
 export const navLinks = [
   { label: "Home", href: "/" },
   { label: "Offerings", href: "/offerings" },

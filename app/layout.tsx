@@ -1,11 +1,6 @@
 import type { Metadata } from "next";
 import { Playfair_Display, Mulish } from "next/font/google";
 import "./globals.css";
-import SmoothScroll from "@/components/providers/SmoothScroll";
-import Grain from "@/components/ui/Grain";
-import Cursor from "@/components/ui/Cursor";
-import Nav from "@/components/layout/Nav";
-import Footer from "@/components/layout/Footer";
 
 const playfair = Playfair_Display({
   variable: "--font-playfair",
@@ -35,15 +30,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${playfair.variable} ${mulish.variable} h-full`}>
-      <body className="min-h-full">
-        <Grain />
-        <Cursor />
-        <Nav />
-        <SmoothScroll>
-          <main>{children}</main>
-          <Footer />
-        </SmoothScroll>
-      </body>
+      <body className="min-h-full">{children}</body>
     </html>
   );
 }
