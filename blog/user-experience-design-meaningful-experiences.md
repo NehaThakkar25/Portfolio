@@ -1,8 +1,20 @@
+<!--
+INTERNAL LINKS TO ADD (already placed inline below as markdown links — swap the URLs for your real ones):
+1. "experience designer" (intro)                → /  (home)
+2. "products people love" (intro)               → /work  (or your best case study)
+3. "understanding their users' needs"           → relevant case study, e.g. /work/[project]
+4. "patient experience" (Healthcare section)    → healthcare case study if you have one
+5. "Research your users' goals" (how-to step 1) → /work/[a research-led project]
+6. "View my work" (author bio)                  → /work
+7. "get in touch" (author bio)                  → /contact
+8. Related-post cross-links (bottom)            → future cluster posts
+-->
+
 # User Experience Design: How to Create Meaningful Experiences That Matter
 
-*By Neha — Experience & Product Designer*
+**Category:** [UX Design](/blog/category/ux-design) · **By** [Neha](/), Experience & Product Designer · **6 min read**
 
-User experience design shapes almost every decision we make, often without us noticing. From the moment you unlock your phone in the morning to the last app you close at night, the quality of an experience quietly guides how you move, choose, and feel. It is the invisible craft behind products people love — and the reason some products get abandoned within seconds.
+User experience design shapes almost every decision we make, often without us noticing. From the moment you unlock your phone in the morning to the last app you close at night, the quality of an experience quietly guides how you move, choose, and feel. It is the invisible craft behind [products people love](/work) <!-- 🔗 link to /work or a top case study --> — and the reason some products get abandoned within seconds.
 
 In an increasingly interconnected world driven by technology and innovation, one element consistently separates products that succeed from products that fail: the quality of the experience. Good UX is no longer a nice-to-have. It is the difference between a customer who stays and one who leaves.
 
@@ -20,7 +32,7 @@ At its core, this discipline is empathy translated into decisions. It asks a sim
 
 In today's digital landscape, UX design plays a pivotal role in shaping how we engage with technology. Intuitive interfaces, seamless navigation, and personalised interactions are no longer desirable extras — they are essential components of user-centric design.
 
-The reason is behavioural. People now have near-infinite choices and near-zero patience. If a product is confusing, slow, or frustrating, users don't persevere; they switch to a competitor that respects their time. This is why companies that prioritise user experience design — investing in understanding their users' needs, behaviours, and preferences — consistently create solutions that resonate on a deeper level and earn loyalty.
+The reason is behavioural. People now have near-infinite choices and near-zero patience. If a product is confusing, slow, or frustrating, users don't persevere; they switch to a competitor that respects their time. This is why companies that prioritise user experience design — investing in [understanding their users' needs](/work) <!-- 🔗 link to a research-led case study -->, behaviours, and preferences — consistently create solutions that resonate on a deeper level and earn loyalty.
 
 There's also a direct business case. Strong UX reduces support costs, increases conversion, improves retention, and builds the kind of word-of-mouth trust that marketing budgets can't buy. When you make something easier to use, you're not just being kind to users — you're protecting revenue.
 
@@ -30,7 +42,7 @@ One of the most misunderstood truths about this field is that it extends far bey
 
 ### UX in Healthcare
 
-In healthcare, the patient experience is a critical factor in delivering quality care. From scheduling an appointment to receiving treatment, every touchpoint in the journey influences how a patient perceives their provider. Preferences vary from person to person — some prioritise comfort and reassurance, while others simply want fast, effective treatment. Thoughtful design considers these diverse needs so that every patient feels their priorities are understood and respected. In a setting where trust is everything, experience is not cosmetic — it's clinical.
+In healthcare, the [patient experience](/work) <!-- 🔗 link to a healthcare/UX case study if you have one --> is a critical factor in delivering quality care. From scheduling an appointment to receiving treatment, every touchpoint in the journey influences how a patient perceives their provider. Preferences vary from person to person — some prioritise comfort and reassurance, while others simply want fast, effective treatment. Thoughtful design considers these diverse needs so that every patient feels their priorities are understood and respected. In a setting where trust is everything, experience is not cosmetic — it's clinical.
 
 ### UX in Retail
 
@@ -55,7 +67,7 @@ Across every industry, the strongest experiences tend to share the same foundati
 
 Understanding the theory is one thing; practising it is another. Here's a practical approach to designing experiences that actually resonate:
 
-1. **Understand before you build.** Research your users' goals, behaviours, and pain points. The best design decisions are grounded in evidence, not opinion.
+1. **Understand before you build.** [Research your users' goals](/work) <!-- 🔗 link to a research-led project -->, behaviours, and pain points. The best design decisions are grounded in evidence, not opinion.
 2. **Map the whole journey.** Look beyond individual screens or moments. Identify every touchpoint and the emotions attached to each one.
 3. **Simplify relentlessly.** Remove friction, reduce steps, and cut anything that doesn't serve the user's goal. Simplicity is a feature.
 4. **Design for emotion, not just function.** Meaningful experiences don't just work — they make people feel capable, respected, and delighted.
@@ -82,6 +94,12 @@ UI (user interface) design focuses on the visual and interactive elements a pers
 **How do you measure good UX?**
 It can be measured through indicators like task completion rates, ease of use, user satisfaction, retention, conversion, and reduced support requests — combined with qualitative feedback from real users.
 
+## Related reading
+
+<!-- 🔗 Add cross-links to your other UX posts here as you publish them (topic cluster). Examples: -->
+- [UX vs UI design: what's the difference?](/blog/ux-vs-ui-design)
+- [My UX design process, step by step](/blog/ux-design-process)
+
 ---
 
-*Neha is an Experience & Product Designer based in India, working with brands worldwide to turn complex problems into simple, human products. [View my work](/) or [get in touch](/contact).*
+*Neha is an Experience & Product Designer based in India, working with brands worldwide to turn complex problems into simple, human products. [View my work](/work) or [get in touch](/contact).*

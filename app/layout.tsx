@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Playfair_Display, Mulish } from "next/font/google";
 import { SITE_URL, SITE_NAME } from "@/lib/site";
+import { personSchema, websiteSchema } from "@/lib/schema";
+import JsonLd from "@/components/seo/JsonLd";
 import "./globals.css";
 
 const playfair = Playfair_Display({
@@ -53,7 +55,11 @@ export default function RootLayout({
       lang="en"
       className={`${playfair.variable} ${mulish.variable} h-full`}
     >
-      <body className="min-h-full">{children}</body>
+      <body className="min-h-full">
+        <JsonLd data={personSchema} />
+        <JsonLd data={websiteSchema} />
+        {children}
+      </body>
     </html>
   );
 }

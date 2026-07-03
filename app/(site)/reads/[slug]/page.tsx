@@ -4,6 +4,8 @@ import { PortableText, type PortableTextComponents } from "@portabletext/react";
 import { getRead, getReadSlugs } from "@/lib/reads";
 import { urlFor } from "@/sanity/lib/image";
 import type { SanityImageSource } from "@sanity/image-url";
+import { blogPostingSchema } from "@/lib/schema";
+import JsonLd from "@/components/seo/JsonLd";
 
 export const revalidate = 60;
 
@@ -60,6 +62,16 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
 
   return (
     <article className="mx-auto max-w-2xl px-[6vw] pb-[20vh] pt-[22vh]">
+      <JsonLd
+        data={blogPostingSchema({
+          title: post.title,
+          excerpt: post.excerpt,
+          slug: post.slug,
+          category: post.category,
+          coverUrl: post.coverUrl,
+          publishedAt: post.publishedAt,
+        })}
+      />
       <Link
         href="/reads"
         className="font-sans text-[11px] uppercase tracking-[0.18em] text-ink/45 transition-colors hover:text-rouge"

@@ -2,7 +2,7 @@ import { client } from "@/sanity/lib/client";
 import { urlFor } from "@/sanity/lib/image";
 import { posts as seedPosts, type ReadCard } from "@/lib/content";
 
-export type ReadFull = ReadCard & { body?: unknown };
+export type ReadFull = ReadCard & { body?: unknown; publishedAt?: string };
 
 function fmtDate(iso?: string): string {
   if (!iso) return "";
@@ -68,6 +68,7 @@ export async function getRead(slug: string): Promise<ReadFull | null> {
         readTime: d.readTime ?? "",
         coverUrl: d.cover ? urlFor(d.cover).width(1400).url() : undefined,
         body: d.body,
+        publishedAt: d.publishedAt,
       };
     }
   } catch {
