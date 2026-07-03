@@ -18,9 +18,9 @@ const mulish = Mulish({
 });
 
 export const metadata: Metadata = {
-  title: "Neha Thakkar | Experience Designer",
+  title: "Neha | Experience & Product Designer",
   description:
-    "Neha Thakkar, Experience Designer crafting considered, human-centred digital experiences. Selected work, case studies, and writing.",
+    "Product & UX designer turning complex ideas into simple, human experiences — for startups and brands worldwide. Explore selected work and case studies.",
 };
 
 export default function RootLayout({
@@ -29,7 +29,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${playfair.variable} ${mulish.variable} h-full`}>
+    <html
+      lang="en"
+      className={`${playfair.variable} ${mulish.variable} h-full`}
+    >
       <body className="min-h-full">{children}</body>
     </html>
   );
