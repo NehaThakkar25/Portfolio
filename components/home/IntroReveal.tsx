@@ -14,19 +14,25 @@ export default function IntroReveal() {
 
       <div className="relative z-10 flex flex-col items-center">
         <Reveal>
-          <span className="eyebrow">The designer</span>
+          <span className="eyebrow">The Designer Portfolio</span>
         </Reveal>
 
         <Reveal delay={80}>
-          <h2 className="mt-7 font-serif text-[clamp(46px,9vw,112px)] font-normal leading-[0.95]">
-            Hi, I&rsquo;m <span className="italic text-rouge-soft">Neha</span>.
-          </h2>
+          <h1 className="mt-7 font-serif text-[clamp(46px,9vw,112px)] font-normal leading-[0.95] line-height-[0.95]">
+            Hi, I&rsquo;m <span className="italic text-rouge-soft">Neha </span>{" "}
+            <br />{" "}
+            <span className="font-bold font-sans text-shadow-mist-50 text-3xl padding-top-0">
+              An Experience & Product Designer
+            </span>
+          </h1>
         </Reveal>
 
         <Reveal delay={180}>
           <p className="mt-8 max-w-2xl text-[clamp(18px,2.2vw,25px)] leading-relaxed text-ink/70">
-            An experience designer. I take the kinds of decisions you just weighed and turn them into products
-            people actually use, balancing users, business, and technology.
+            An enthusiastic designer specializing in product, UX & UI design. I
+            can turn complex problems into simple, human products, balancing
+            users, business, and technology. India-based, working with brands
+            worldwide.
           </p>
         </Reveal>
 
@@ -50,7 +56,10 @@ export default function IntroReveal() {
         <Reveal delay={360}>
           <dl className="mt-12 flex flex-nowrap items-start justify-center gap-x-6">
             {stats.map((s, i) => (
-              <div key={s.label} className={`min-w-0 ${i > 0 ? "border-l border-white/10 pl-6" : ""}`}>
+              <div
+                key={s.label}
+                className={`min-w-0 ${i > 0 ? "border-l border-white/10 pl-6" : ""}`}
+              >
                 <dt className="font-sans text-[clamp(24px,2.8vw,36px)] font-semibold leading-none tracking-tight text-ink tabular-nums">
                   <CountUp value={s.value} />
                   {s.suffix}
