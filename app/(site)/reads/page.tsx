@@ -4,7 +4,12 @@ import { getReads } from "@/lib/reads";
 export const metadata = { title: "Reads | Neha Thakkar" };
 export const revalidate = 60;
 
-export default async function ReadsPage() {
+export default async function ReadsPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ category?: string }>;
+}) {
+  const { category } = await searchParams;
   const posts = await getReads();
 
   return (
@@ -21,7 +26,7 @@ export default async function ReadsPage() {
         </p>
       </header>
 
-      <ReadsIndex posts={posts} />
+      <ReadsIndex posts={posts} initialCategory={category} />
     </section>
   );
 }

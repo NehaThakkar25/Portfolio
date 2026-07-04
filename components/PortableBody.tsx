@@ -27,11 +27,32 @@ const components: PortableTextComponents = {
       </blockquote>
     ),
   },
+  list: {
+    bullet: ({ children }) => (
+      <ul className="my-5 list-disc space-y-2 pl-6 text-[17px] leading-relaxed text-ink/75 marker:text-rouge-soft">
+        {children}
+      </ul>
+    ),
+    number: ({ children }) => (
+      <ol className="my-5 list-decimal space-y-2 pl-6 text-[17px] leading-relaxed text-ink/75 marker:text-rouge-soft">
+        {children}
+      </ol>
+    ),
+  },
+  listItem: {
+    bullet: ({ children }) => <li className="pl-1.5">{children}</li>,
+    number: ({ children }) => <li className="pl-1.5">{children}</li>,
+  },
   marks: {
     strong: ({ children }) => <strong className="font-semibold text-ink">{children}</strong>,
     em: ({ children }) => <em className="italic">{children}</em>,
     link: ({ children, value }) => (
-      <a href={value?.href} target="_blank" rel="noopener noreferrer" className="text-rouge-soft underline underline-offset-2">
+      <a
+        href={value?.href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="font-semibold text-rouge-soft transition-colors hover:text-rouge"
+      >
         {children}
       </a>
     ),
@@ -52,6 +73,37 @@ const components: PortableTextComponents = {
           {value.text}
         </blockquote>
       ) : null,
+    table: ({ value }) => {
+      const rows: { _key?: string; cells?: string[] }[] = value?.rows ?? [];
+      if (!rows.length) return null;
+      const [head, ...body] = rows;
+      return (
+        <div className="my-8 overflow-x-auto rounded-xl border border-white/12">
+          <table className="w-full border-collapse text-left text-[15px]">
+            <thead>
+              <tr className="border-b border-white/12 bg-white/[0.04]">
+                {(head.cells ?? []).map((cell, i) => (
+                  <th key={i} className="px-4 py-3 font-sans text-[12px] font-semibold uppercase tracking-[0.1em] text-rouge-soft">
+                    {cell}
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {body.map((row, r) => (
+                <tr key={row._key ?? r} className="border-b border-white/8 last:border-0">
+                  {(row.cells ?? []).map((cell, c) => (
+                    <td key={c} className="px-4 py-3 align-top text-ink/75">
+                      {cell}
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      );
+    },
   },
 };
 

@@ -15,8 +15,16 @@ const COVERS = [
   "linear-gradient(135deg, #5b1a30, #3d0f20)",
 ];
 
-export default function ReadsIndex({ posts }: { posts: ReadCard[] }) {
-  const [active, setActive] = useState("All");
+export default function ReadsIndex({
+  posts,
+  initialCategory,
+}: {
+  posts: ReadCard[];
+  initialCategory?: string;
+}) {
+  const [active, setActive] = useState(() =>
+    initialCategory && posts.some((p) => p.category === initialCategory) ? initialCategory : "All"
+  );
 
   const categories = useMemo(() => {
     const counts: Record<string, number> = {};

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import { getRead, getReadSlugs } from "@/lib/reads";
+import { getRead, getReads, getReadSlugs } from "@/lib/reads";
 import { blogPostingSchema, faqSchema } from "@/lib/schema";
 import { extractHeadings, type Heading } from "@/lib/toc";
 import { profile } from "@/lib/content";
@@ -9,6 +9,7 @@ import JsonLd from "@/components/seo/JsonLd";
 import PortableBody from "@/components/PortableBody";
 import TableOfContents from "@/components/reads/TableOfContents";
 import FaqSection from "@/components/reads/FaqSection";
+import ArticleAside from "@/components/reads/ArticleAside";
 
 export const revalidate = 60;
 
@@ -34,6 +35,17 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
   const headings: Heading[] = extractHeadings(body);
   const tocHeadings = faqs.length > 0 ? [...headings, { id: "faqs", text: "FAQs", level: 2 }] : headings;
 
+  // related posts (same category, most recent) + all categories for the rail
+  const allReads = await getReads();
+  const related = allReads.filter((p) => p.category === post.category && p.slug !== post.slug).slice(0, 10);
+  const catCounts: Record<string, number> = {};
+  allReads.forEach((p) => {
+    if (p.category) catCounts[p.category] = (catCounts[p.category] ?? 0) + 1;
+  });
+  const categories = Object.keys(catCounts)
+    .sort()
+    .map((name) => ({ name, count: catCounts[name] }));
+
   return (
     <>
       <JsonLd
@@ -48,7 +60,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
       />
       {faqs.length > 0 && <JsonLd data={faqSchema(faqs)} />}
 
-      <div className="grid grid-cols-1 gap-x-16 px-[6vw] pb-[20vh] pt-[16vh] lg:grid-cols-[200px_1fr]">
+      <div className="grid grid-cols-1 gap-x-12 px-[6vw] pb-[20vh] pt-[16vh] lg:grid-cols-[260px_minmax(0,1fr)] xl:grid-cols-[260px_minmax(0,1fr)_260px]">
         {/* left: sticky table of contents (desktop only) */}
         <aside className="hidden lg:block">
           {tocHeadings.length > 0 && <TableOfContents headings={tocHeadings} variant="sidebar" />}
@@ -64,7 +76,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
           </Link>
 
           {/* banner */}
-          <div className="relative mt-8 aspect-[16/9] w-full overflow-hidden rounded-2xl border border-white/10">
+          <div className="relative mt-8 aspect-[16/9] w-full max-w-[1200px] overflow-hidden rounded-2xl border border-white/10">
             {post.coverUrl ? (
               <Image src={post.coverUrl} alt={post.title} fill sizes="(max-width: 768px) 100vw, 720px" className="object-cover" priority />
             ) : (
@@ -124,7 +136,19 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
 
           {/* per-post FAQs */}
           <FaqSection faqs={faqs} />
+
+          {/* related + categories, below the article when the rail is hidden */}
+          <div className="mt-16 border-t border-white/10 pt-10 xl:hidden">
+            <ArticleAside related={related} categories={categories} currentCategory={post.category} />
+          </div>
         </article>
+
+        {/* right rail (xl and up) */}
+        <aside className="hidden xl:block">
+          <div className="sticky top-28">
+            <ArticleAside related={related} categories={categories} currentCategory={post.category} />
+          </div>
+        </aside>
       </div>
     </>
   );

@@ -45,6 +45,7 @@ export const project = defineType({
       of: [
         { type: "block" },
         { type: "image", options: { hotspot: true } },
+        { type: "table" },
         { type: "object", name: "quote", title: "Pull quote", fields: [{ name: "text", type: "text", title: "Quote" }] },
       ],
     }),
