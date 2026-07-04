@@ -33,6 +33,23 @@ export const post = defineType({
       type: "array",
       of: [{ type: "block" }, { type: "image", options: { hotspot: true } }],
     }),
+    defineField({
+      name: "faqs",
+      title: "FAQs",
+      description: "Optional. Questions and answers specific to this post.",
+      type: "array",
+      of: [
+        {
+          type: "object",
+          name: "faq",
+          fields: [
+            { name: "question", type: "string", title: "Question", validation: (r) => r.required() },
+            { name: "answer", type: "text", rows: 4, title: "Answer", validation: (r) => r.required() },
+          ],
+          preview: { select: { title: "question" } },
+        },
+      ],
+    }),
   ],
   orderings: [
     {

@@ -5,8 +5,22 @@ import type { SanityImageSource } from "@sanity/image-url";
 const components: PortableTextComponents = {
   block: {
     normal: ({ children }) => <p className="mb-5 text-[17px] leading-relaxed text-ink/75">{children}</p>,
-    h2: ({ children }) => <h2 className="mb-4 mt-10 font-serif text-[28px] font-normal text-ink">{children}</h2>,
-    h3: ({ children }) => <h3 className="mb-3 mt-8 font-serif text-[22px] font-normal text-ink">{children}</h3>,
+    h2: ({ children, value }) => (
+      <h2
+        id={(value as { _key?: string })?._key}
+        className="mb-4 mt-14 scroll-mt-28 font-serif text-[clamp(26px,3.2vw,32px)] font-normal text-ink"
+      >
+        {children}
+      </h2>
+    ),
+    h3: ({ children, value }) => (
+      <h3
+        id={(value as { _key?: string })?._key}
+        className="mb-3 mt-10 scroll-mt-28 font-serif text-[22px] font-normal text-ink"
+      >
+        {children}
+      </h3>
+    ),
     blockquote: ({ children }) => (
       <blockquote className="my-6 border-l-2 border-rouge pl-4 font-serif text-[20px] italic text-ink/80">
         {children}

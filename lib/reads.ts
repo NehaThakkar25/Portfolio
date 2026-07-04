@@ -2,7 +2,8 @@ import { client } from "@/sanity/lib/client";
 import { urlFor } from "@/sanity/lib/image";
 import { posts as seedPosts, type ReadCard } from "@/lib/content";
 
-export type ReadFull = ReadCard & { body?: unknown; publishedAt?: string };
+export type Faq = { question: string; answer: string };
+export type ReadFull = ReadCard & { body?: unknown; publishedAt?: string; faqs?: Faq[] };
 
 function fmtDate(iso?: string): string {
   if (!iso) return "";
@@ -18,7 +19,7 @@ const LIST_QUERY = `*[_type == "post" && defined(slug.current)] | order(publishe
 }`;
 
 const ONE_QUERY = `*[_type == "post" && slug.current == $slug][0]{
-  "slug": slug.current, title, excerpt, category, publishedAt, readTime, cover, body
+  "slug": slug.current, title, excerpt, category, publishedAt, readTime, cover, body, faqs
 }`;
 
 const SLUGS_QUERY = `*[_type == "post" && defined(slug.current)].slug.current`;
@@ -32,6 +33,7 @@ type Raw = {
   readTime?: string;
   cover?: Parameters<typeof urlFor>[0];
   body?: unknown;
+  faqs?: Faq[];
 };
 
 /** All reads. Falls back to the local seed when Sanity is empty or unreachable. */
@@ -50,7 +52,7 @@ export async function getReads(): Promise<ReadCard[]> {
       }));
     }
   } catch {
-    // network/CORS/empty — fall through to seed
+    // network/CORS/empty, fall through to seed
   }
   return seedPosts.map((p) => ({ ...p }));
 }
@@ -69,6 +71,7 @@ export async function getRead(slug: string): Promise<ReadFull | null> {
         coverUrl: d.cover ? urlFor(d.cover).width(1400).url() : undefined,
         body: d.body,
         publishedAt: d.publishedAt,
+        faqs: d.faqs,
       };
     }
   } catch {
