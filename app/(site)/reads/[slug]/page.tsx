@@ -1,11 +1,9 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { PortableText, type PortableTextComponents } from "@portabletext/react";
 import { getRead, getReadSlugs } from "@/lib/reads";
-import { urlFor } from "@/sanity/lib/image";
-import type { SanityImageSource } from "@sanity/image-url";
 import { blogPostingSchema } from "@/lib/schema";
 import JsonLd from "@/components/seo/JsonLd";
+import PortableBody from "@/components/PortableBody";
 
 export const revalidate = 60;
 
@@ -20,45 +18,13 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return { title: post ? `${post.title} | Neha Thakkar` : "Reads | Neha Thakkar" };
 }
 
-const ptComponents: PortableTextComponents = {
-  block: {
-    normal: ({ children }) => <p className="mb-5 text-[17px] leading-relaxed text-ink/75">{children}</p>,
-    h2: ({ children }) => <h2 className="mb-4 mt-10 font-serif text-[28px] font-normal text-ink">{children}</h2>,
-    h3: ({ children }) => <h3 className="mb-3 mt-8 font-serif text-[22px] font-normal text-ink">{children}</h3>,
-    blockquote: ({ children }) => (
-      <blockquote className="my-6 border-l-2 border-rouge pl-4 font-serif text-[20px] italic text-ink/80">
-        {children}
-      </blockquote>
-    ),
-  },
-  marks: {
-    strong: ({ children }) => <strong className="font-semibold text-ink">{children}</strong>,
-    em: ({ children }) => <em className="italic">{children}</em>,
-    link: ({ children, value }) => (
-      <a href={value?.href} target="_blank" rel="noopener noreferrer" className="text-rouge-soft underline underline-offset-2">
-        {children}
-      </a>
-    ),
-  },
-  types: {
-    image: ({ value }) =>
-      value?.asset ? (
-        // eslint-disable-next-line @next/next/no-img-element
-        <img
-          src={urlFor(value as SanityImageSource).width(1200).url()}
-          alt={value?.alt || ""}
-          className="my-8 w-full rounded-xl border border-white/10"
-        />
-      ) : null,
-  },
-};
-
 export default async function PostPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const post = await getRead(slug);
   if (!post) notFound();
 
-  const body = post.body as React.ComponentProps<typeof PortableText>["value"] | undefined;
+  const body = post.body;
+  const hasBody = Array.isArray(body) && body.length > 0;
 
   return (
     <article className="mx-auto max-w-2xl px-[6vw] pb-[20vh] pt-[22vh]">
@@ -91,8 +57,8 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
       <p className="mt-8 text-[clamp(17px,2.2vw,22px)] leading-relaxed text-ink/70">{post.excerpt}</p>
 
       <div className="mt-12 border-t border-white/10 pt-10">
-        {body && Array.isArray(body) && body.length > 0 ? (
-          <PortableText value={body} components={ptComponents} />
+        {hasBody ? (
+          <PortableBody value={body} />
         ) : (
           <p className="font-sans text-[13px] uppercase tracking-[0.2em] text-ink/40">Full article coming soon</p>
         )}
