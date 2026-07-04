@@ -18,7 +18,7 @@ export const post = defineType({
       title: "Category",
       type: "string",
       options: {
-        list: ["Craft", "Process", "Systems", "Career", "Tools"],
+        list: ["UX Design", "UI Design", "Design Thinking", "Tools", "UX Strategy"],
         layout: "radio",
       },
       validation: (r) => r.required(),
