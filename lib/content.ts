@@ -203,48 +203,106 @@ export type Offering = {
   name: string;
   summary: string;
   tools: string[];
+  deliverables?: string[];
 };
 
 export const offerings: Offering[] = [
   {
-    name: "UI/UX Design",
-    summary: "End-to-end product design: flows, wireframes, and polished interfaces.",
-    tools: ["Figma", "Protopie"],
-  },
-  {
     name: "UX Audits",
-    summary: "Heuristic and usability reviews that surface friction and quick wins.",
+    summary:
+      "A close look at your product to surface where users struggle, with clear, prioritised fixes you can act on.",
+    deliverables: ["Heuristic evaluation", "Usability findings", "Prioritised recommendations"],
     tools: ["Figma", "Maze"],
   },
   {
-    name: "Branding",
-    summary: "Visual identity, logo, and brand systems that feel cohesive everywhere.",
+    name: "UI/UX Design",
+    summary:
+      "End-to-end product design that turns a fuzzy idea into flows, screens, and interactions people find effortless.",
+    deliverables: ["User flows & wireframes", "High-fidelity interface", "Interactive prototype"],
+    tools: ["Figma", "Protopie"],
+  },
+  {
+    name: "Branding & Identity",
+    summary:
+      "A cohesive visual identity, from logo to system, so your product feels considered everywhere it shows up.",
+    deliverables: ["Logo & wordmark", "Colour & type system", "Brand guidelines"],
     tools: ["Illustrator", "Figma"],
   },
   {
     name: "Product Strategy",
-    summary: "Shaping what to build and why: positioning, priorities, and roadmaps.",
+    summary:
+      "Deciding what to build and why, aligning users, business, and technology before a pixel is drawn.",
+    deliverables: ["Positioning & priorities", "Feature roadmap", "Success metrics"],
     tools: ["Miro", "Notion"],
   },
   {
     name: "Framer Development",
-    summary: "Production-ready, animated sites built and shipped in Framer.",
+    summary:
+      "Production-ready, animated sites built and shipped in Framer, so the design goes live exactly as intended.",
+    deliverables: ["Responsive build", "Scroll & motion", "Launch-ready site"],
     tools: ["Framer"],
   },
   {
     name: "Design Systems",
-    summary: "Scalable component libraries and tokens that keep teams consistent.",
+    summary:
+      "Scalable component libraries and tokens that keep a growing team fast, consistent, and on-brand.",
+    deliverables: ["Component library", "Design tokens", "Usage documentation"],
     tools: ["Figma", "Storybook"],
   },
   {
     name: "Prototyping",
-    summary: "High-fidelity, interactive prototypes to validate ideas fast.",
+    summary:
+      "High-fidelity, interactive prototypes that make ideas feel real and testable before you commit to building.",
+    deliverables: ["Clickable prototype", "Micro-interactions", "Motion specs"],
     tools: ["Protopie", "Figma"],
   },
   {
     name: "Workshops",
-    summary: "Facilitated sessions for discovery, ideation, and design thinking.",
+    summary:
+      "Focused, facilitated sessions for discovery, ideation, and alignment, moving a team forward in days.",
+    deliverables: ["Discovery sessions", "Ideation & sketching", "Aligned direction"],
     tools: ["Miro", "FigJam"],
+  },
+];
+
+export const processSteps: { title: string; description: string }[] = [
+  { title: "Discover", description: "We dig into the problem, the users, and the goals until the real challenge is clear." },
+  { title: "Define", description: "I frame the direction, scope, and success measures so we build the right thing." },
+  { title: "Design", description: "Flows, interface, and motion come together, tested and refined as we go." },
+  { title: "Deliver", description: "Polished, documented, and handed off ready to ship, with support after launch." },
+];
+
+export const engagementModels: { name: string; description: string }[] = [
+  { name: "Project", description: "A defined scope with a clear start and finish. Best for launches and redesigns." },
+  { name: "Retainer", description: "An ongoing design partnership, a set amount of my time each month." },
+  { name: "Advisory", description: "Lightweight guidance, reviews, and design direction for your team." },
+  { name: "Workshop", description: "A focused session to align, ideate, or unblock, in days rather than weeks." },
+];
+
+export const offeringsFaqs: { question: string; answer: string }[] = [
+  {
+    question: "How do projects usually start?",
+    answer:
+      "With a short call to understand your goals, followed by a proposal with clear scope, timeline, and cost.",
+  },
+  {
+    question: "What does a typical timeline look like?",
+    answer:
+      "Most projects run four to eight weeks depending on scope. Audits and workshops are faster, often a week or less.",
+  },
+  {
+    question: "Do you work with teams remotely?",
+    answer:
+      "Yes. I work with founders and teams worldwide, async-friendly with regular check-ins so nothing gets lost.",
+  },
+  {
+    question: "Can you work alongside our existing team?",
+    answer:
+      "Absolutely. I often plug into existing design and engineering teams, from shaping a design system to clean handoff.",
+  },
+  {
+    question: "How do we get started?",
+    answer: "Reach out through the contact page with a little about your project, and we will take it from there.",
   },
 ];
 
