@@ -12,9 +12,12 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ category: string; slug: string }> }) {
-  const { slug } = await params;
+  const { category, slug } = await params;
   const project = await getProject(slug);
-  return { title: project ? `${project.title} | Neha Thakkar` : "Work | Neha Thakkar" };
+  return {
+    title: project ? `${project.title} | Neha Thakkar` : "Work | Neha Thakkar",
+    alternates: { canonical: `/work/${category}/${slug}` },
+  };
 }
 
 export default async function ProjectPage({

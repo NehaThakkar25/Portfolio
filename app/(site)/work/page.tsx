@@ -5,6 +5,7 @@ export const metadata = {
   title: "Product Design Portfolio in India | Neha Thakkar",
   description:
     "Case studies, UX audits, branding, and design systems. Browse a product design portfolio from India, built for startups and brands worldwide.",
+  alternates: { canonical: "/work" },
 };
 export const revalidate = 60;
 

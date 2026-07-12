@@ -5,6 +5,7 @@ export const metadata = {
   title: "Product Design Blog | Neha Thakkar",
   description:
     "Notes on UX thinking, design decisions, and product learnings. A product design blog by a designer building real products for startups and brands.",
+  alternates: { canonical: "/reads" },
 };
 export const revalidate = 60;
 

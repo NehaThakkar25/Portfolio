@@ -10,6 +10,7 @@ export const metadata = {
   title: "Product Design Services in India | Neha Thakkar",
   description:
     "UX and UI design, audits, branding, and design systems. Explore product design services in India, built to turn ideas into products people love.",
+  alternates: { canonical: "/offerings" },
 };
 
 export default function OfferingsPage() {

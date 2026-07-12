@@ -12,7 +12,10 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ category: string }> }) {
   const { category } = await params;
   const cat = getCategory(category);
-  return { title: cat ? `${cat.title} | Neha Thakkar` : "Work | Neha Thakkar" };
+  return {
+    title: cat ? `${cat.title} | Neha Thakkar` : "Work | Neha Thakkar",
+    alternates: { canonical: `/work/${category}` },
+  };
 }
 
 export default async function CategoryPage({ params }: { params: Promise<{ category: string }> }) {

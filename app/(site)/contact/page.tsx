@@ -7,6 +7,7 @@ export const metadata = {
   title: "Hire a Product Designer | Neha Thakkar",
   description:
     "Have a project in mind? Hire a product designer for UX, UI, and product work. Based in India, working with startups and brands worldwide.",
+  alternates: { canonical: "/contact" },
 };
 
 const EMAIL = "emailnehathakkar@gmail.com";
