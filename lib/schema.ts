@@ -9,7 +9,7 @@ export const personSchema = {
   "@type": "Person",
   name: SITE_NAME,
   url: SITE_URL,
-  image: `${SITE_URL}/neha-profile.png`,
+  image: `${SITE_URL}/neha-profile.avif`,
   jobTitle: "Experience & Product Designer",
   worksFor: { "@type": "Organization", name: "Zoop" },
   address: { "@type": "PostalAddress", addressCountry: "IN" },

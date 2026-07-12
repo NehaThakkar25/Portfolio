@@ -18,7 +18,9 @@ export default function About() {
       cancelAnimationFrame(raf);
       raf = requestAnimationFrame(() => {
         const rect = el.getBoundingClientRect();
-        const progress = (rect.top + rect.height / 2 - window.innerHeight / 2) / window.innerHeight;
+        const progress =
+          (rect.top + rect.height / 2 - window.innerHeight / 2) /
+          window.innerHeight;
         el.style.transform = `translateY(${progress * -26}px)`;
       });
     };
@@ -30,7 +32,8 @@ export default function About() {
     };
   }, []);
 
-  const statement = "Great design feels obvious. Getting there almost never is.";
+  const statement =
+    "Great design feels obvious. Getting there almost never is.";
 
   return (
     <section id="about" className="relative px-[6vw] py-[14vh]">
@@ -42,8 +45,16 @@ export default function About() {
 
           <h2 className="mt-7 max-w-[14ch] font-serif text-[clamp(30px,4.4vw,56px)] font-normal leading-[1.08] text-balance">
             {statement.split(" ").map((word, i) => (
-              <Reveal key={i} delay={i * 60} className="mr-[0.28em] inline-block">
-                <span className={word.startsWith("obvious") ? "italic text-rouge-soft" : ""}>
+              <Reveal
+                key={i}
+                delay={i * 60}
+                className="mr-[0.28em] inline-block"
+              >
+                <span
+                  className={
+                    word.startsWith("obvious") ? "italic text-rouge-soft" : ""
+                  }
+                >
                   {word}
                 </span>
               </Reveal>
@@ -51,7 +62,9 @@ export default function About() {
           </h2>
 
           <Reveal delay={120}>
-            <p className="mt-8 max-w-[52ch] text-[18px] leading-[1.8] text-ink/65">{profile.bio}</p>
+            <p className="mt-8 max-w-[52ch] text-[18px] leading-[1.8] text-ink/65">
+              {profile.bio}
+            </p>
           </Reveal>
 
           <Reveal delay={200}>
@@ -79,7 +92,7 @@ export default function About() {
           <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl border border-white/12">
             <div ref={portraitRef} className="absolute inset-[-8%]">
               <Image
-                src="/neha-profile.png"
+                src="/neha-profile.avif"
                 alt="Neha Thakkar, product designer in India"
                 fill
                 priority

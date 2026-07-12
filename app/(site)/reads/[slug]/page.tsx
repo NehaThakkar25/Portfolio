@@ -18,7 +18,11 @@ export async function generateStaticParams() {
   return slugs.map((slug) => ({ slug }));
 }
 
-export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
   const { slug } = await params;
   const post = await getRead(slug);
   if (!post) return { title: "Reads | Neha Thakkar" };
@@ -41,7 +45,11 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   };
 }
 
-export default async function PostPage({ params }: { params: Promise<{ slug: string }> }) {
+export default async function PostPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
   const { slug } = await params;
   const post = await getRead(slug);
   if (!post) notFound();
@@ -50,11 +58,16 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
   const hasBody = Array.isArray(body) && body.length > 0;
   const faqs = post.faqs ?? [];
   const headings: Heading[] = extractHeadings(body);
-  const tocHeadings = faqs.length > 0 ? [...headings, { id: "faqs", text: "FAQs", level: 2 }] : headings;
+  const tocHeadings =
+    faqs.length > 0
+      ? [...headings, { id: "faqs", text: "FAQs", level: 2 }]
+      : headings;
 
   // related posts (same category, most recent) + all categories for the rail
   const allReads = await getReads();
-  const related = allReads.filter((p) => p.category === post.category && p.slug !== post.slug).slice(0, 10);
+  const related = allReads
+    .filter((p) => p.category === post.category && p.slug !== post.slug)
+    .slice(0, 10);
   const catCounts: Record<string, number> = {};
   allReads.forEach((p) => {
     if (p.category) catCounts[p.category] = (catCounts[p.category] ?? 0) + 1;
@@ -80,7 +93,9 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
       <div className="grid grid-cols-1 gap-x-12 px-[6vw] pb-[20vh] pt-[16vh] lg:grid-cols-[260px_minmax(0,1fr)] xl:grid-cols-[260px_minmax(0,1fr)_260px]">
         {/* left: sticky table of contents (desktop only) */}
         <aside className="hidden lg:block">
-          {tocHeadings.length > 0 && <TableOfContents headings={tocHeadings} variant="sidebar" />}
+          {tocHeadings.length > 0 && (
+            <TableOfContents headings={tocHeadings} variant="sidebar" />
+          )}
         </aside>
 
         {/* right: the article */}
@@ -95,23 +110,35 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
           {/* banner */}
           <div className="relative mt-8 aspect-[16/9] w-full max-w-[1200px] overflow-hidden rounded-2xl border border-white/10">
             {post.coverUrl ? (
-              <Image src={post.coverUrl} alt={post.title} fill sizes="(max-width: 768px) 100vw, 720px" className="object-cover" priority />
+              <Image
+                src={post.coverUrl}
+                alt={post.title}
+                fill
+                sizes="(max-width: 768px) 100vw, 720px"
+                className="object-cover"
+                priority
+              />
             ) : (
               <div
                 className="h-full w-full"
-                style={{ background: "radial-gradient(120% 120% at 20% 10%, #9b2d4f, #2a0a16 60%)" }}
+                style={{
+                  background:
+                    "radial-gradient(120% 120% at 20% 10%, #9b2d4f, #2a0a16 60%)",
+                }}
               />
             )}
           </div>
 
           {/* title */}
           {post.category && <p className="eyebrow mt-9">{post.category}</p>}
-          <h1 className="mt-4 font-serif text-[clamp(36px,6vw,64px)] font-normal leading-[1.02]">{post.title}</h1>
+          <h1 className="mt-4 font-serif text-[clamp(36px,6vw,64px)] font-normal leading-[1.02]">
+            {post.title}
+          </h1>
 
           {/* author */}
           <div className="mt-8 flex items-center gap-3">
             <Image
-              src="/neha-profile.png"
+              src="/neha-profile.avif"
               alt={profile.name}
               width={44}
               height={44}
@@ -119,19 +146,25 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
             />
             <div>
               <p className="font-sans text-[14px] text-ink">{profile.name}</p>
-              <p className="font-sans text-[12px] text-ink/50">{profile.role}</p>
+              <p className="font-sans text-[12px] text-ink/50">
+                {profile.role}
+              </p>
             </div>
           </div>
 
           {/* excerpt */}
           {post.excerpt && (
-            <p className="mt-7 text-[clamp(18px,2.2vw,22px)] leading-relaxed text-ink/60">{post.excerpt}</p>
+            <p className="mt-7 text-[clamp(18px,2.2vw,22px)] leading-relaxed text-ink/60">
+              {post.excerpt}
+            </p>
           )}
 
           {/* metadata */}
           <div className="mt-6 flex items-center gap-2.5 font-sans text-[12px] uppercase tracking-[0.16em] text-ink/45">
             {post.date && <span>{post.date}</span>}
-            {post.date && post.readTime && <span className="text-ink/20">·</span>}
+            {post.date && post.readTime && (
+              <span className="text-ink/20">·</span>
+            )}
             {post.readTime && <span>{post.readTime}</span>}
           </div>
 
@@ -148,7 +181,9 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
           {hasBody ? (
             <PortableBody value={body} />
           ) : (
-            <p className="font-sans text-[13px] uppercase tracking-[0.2em] text-ink/40">Full article coming soon</p>
+            <p className="font-sans text-[13px] uppercase tracking-[0.2em] text-ink/40">
+              Full article coming soon
+            </p>
           )}
 
           {/* per-post FAQs */}
@@ -156,14 +191,22 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
 
           {/* related + categories, below the article when the rail is hidden */}
           <div className="mt-16 border-t border-white/10 pt-10 xl:hidden">
-            <ArticleAside related={related} categories={categories} currentCategory={post.category} />
+            <ArticleAside
+              related={related}
+              categories={categories}
+              currentCategory={post.category}
+            />
           </div>
         </article>
 
         {/* right rail (xl and up) */}
         <aside className="hidden xl:block">
           <div className="sticky top-28">
-            <ArticleAside related={related} categories={categories} currentCategory={post.category} />
+            <ArticleAside
+              related={related}
+              categories={categories}
+              currentCategory={post.category}
+            />
           </div>
         </aside>
       </div>
