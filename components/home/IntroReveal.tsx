@@ -14,7 +14,7 @@ export default function IntroReveal() {
 
       <div className="relative z-10 flex flex-col items-center">
         <Reveal>
-          <span className="eyebrow">The Designer Portfolio</span>
+          <span className="eyebrow">The human behind the pixels</span>
         </Reveal>
 
         <Reveal delay={80}>
@@ -22,17 +22,15 @@ export default function IntroReveal() {
             Hi, I&rsquo;m <span className="italic text-rouge-soft">Neha </span>{" "}
             <br />{" "}
             <span className="font-bold font-sans text-shadow-mist-50 text-3xl padding-top-0">
-              An Experience & Product Designer
+              A Product & Experience Designer in India
             </span>
           </h1>
         </Reveal>
 
         <Reveal delay={180}>
           <p className="mt-8 max-w-2xl text-[clamp(18px,2.2vw,25px)] leading-relaxed text-ink/70">
-            An enthusiastic designer specializing in product, UX & UI design. I
-            can turn complex problems into simple, human products, balancing
-            users, business, and technology. India-based, working with brands
-            worldwide.
+            I turn messy, complicated problems into products that feel effortless to use. Equal parts UX,
+            UI, and curiosity, working with startups and brands around the world.
           </p>
         </Reveal>
 

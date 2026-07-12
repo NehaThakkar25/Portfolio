@@ -7,9 +7,9 @@ import ScopeComposer from "@/components/offerings/ScopeComposer";
 import FaqSection from "@/components/reads/FaqSection";
 
 export const metadata = {
-  title: "Offerings | Neha Thakkar",
+  title: "Product Design Services in India | Neha Thakkar",
   description:
-    "Ways to work with Neha Thakkar: UI/UX design, UX audits, branding, product strategy, Framer development, design systems, prototyping, and workshops.",
+    "UX and UI design, audits, branding, and design systems. Explore product design services in India, built to turn ideas into products people love.",
 };
 
 export default function OfferingsPage() {
@@ -22,11 +22,11 @@ export default function OfferingsPage() {
             <Reveal>
               <span className="eyebrow">Offerings</span>
               <h1 className="mt-5 font-serif text-[clamp(40px,7vw,84px)] font-normal leading-[0.95]">
-                What I can <span className="italic text-rouge-soft">do</span> for you
+                From first sketch to <span className="italic text-rouge-soft">shipped</span> product
               </h1>
               <p className="mt-6 max-w-md text-[clamp(16px,2vw,20px)] leading-relaxed text-ink/65">
-                From the first fuzzy idea to a shipped, polished product, here are the ways we can work
-                together.
+                Product design services in India for startups and brands worldwide. Bring the idea, and
+                together we&rsquo;ll shape it into a product people genuinely love to use.
               </p>
             </Reveal>
           </div>
@@ -40,9 +40,9 @@ export default function OfferingsPage() {
       <section className="border-t border-white/10 py-[6vh]">
         <div className="mb-6 px-[6vw]">
           <Reveal>
-            <span className="eyebrow">The services</span>
+            <span className="eyebrow">Product design services</span>
             <h2 className="mt-4 font-serif text-[clamp(28px,4vw,48px)] font-normal">
-              Explore each <span className="italic text-rouge-soft">offering</span>
+              Every service, from sketch to <span className="italic text-rouge-soft">launch</span>
             </h2>
           </Reveal>
         </div>
@@ -54,7 +54,7 @@ export default function OfferingsPage() {
         <Reveal>
           <span className="eyebrow">How we work</span>
           <h2 className="mt-5 font-serif text-[clamp(30px,4.4vw,52px)] font-normal">
-            A calm, deliberate <span className="italic text-rouge-soft">process</span>
+            A calm, deliberate design <span className="italic text-rouge-soft">process</span>
           </h2>
         </Reveal>
         <div className="mt-14 grid gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
@@ -80,8 +80,8 @@ export default function OfferingsPage() {
             Pick what you need. I&rsquo;ll shape the <span className="italic text-rouge-soft">brief</span>.
           </h2>
           <p className="mt-4 max-w-xl text-[15px] leading-relaxed text-ink/55">
-            Select the services you&rsquo;re after and I&rsquo;ll suggest the engagement that fits, with a
-            rough timeline to match.
+            Tell me which product design services you need, and I&rsquo;ll suggest the engagement that
+            fits, with a rough timeline to match.
           </p>
         </Reveal>
         <div className="mt-12">

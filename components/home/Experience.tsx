@@ -45,12 +45,12 @@ export default function Experience() {
         onPointerMove={onMove}
         onPointerUp={onUp}
         onPointerCancel={onUp}
-        className="relative mt-14 flex cursor-grab gap-7 overflow-x-auto pb-4 active:cursor-grabbing [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        className="relative -mr-[6vw] mt-14 flex cursor-grab gap-7 overflow-x-auto pb-4 active:cursor-grabbing [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
       >
         {/* horizontal rail */}
         <span
           aria-hidden="true"
-          className="pointer-events-none absolute left-1 right-1 top-[46px] h-px bg-gradient-to-r from-rouge via-white/20 to-transparent"
+          className="pointer-events-none absolute left-1 right-1 top-[46px] h-px bg-white/15"
         />
         {experience.map((item, i) => (
           <li

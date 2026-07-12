@@ -16,7 +16,7 @@ export const profile = {
   bio: "I came to design from engineering, so I think in flows and edge cases as much as in pixels. These days I lead design at Zoop, shaping products from the first rough sketch to the shipped release. What I care about most is clarity, restraint, and the small moments that make something feel considered.",
   location: "India",
   availability: "Open to select projects",
-  email: "neha@zoop.one",
+  email: "emailnehathakkar@gmail.com",
   socials: [
     { label: "LinkedIn", href: "https://linkedin.com/in/" },
     { label: "Behance", href: "https://behance.net/" },
@@ -291,9 +291,9 @@ export const offeringsFaqs: { question: string; answer: string }[] = [
       "Most projects run four to eight weeks depending on scope. Audits and workshops are faster, often a week or less.",
   },
   {
-    question: "Do you work with teams remotely?",
+    question: "Do you offer product design services remotely?",
     answer:
-      "Yes. I work with founders and teams worldwide, async-friendly with regular check-ins so nothing gets lost.",
+      "Yes. Based in India, I work with founders and teams worldwide, async-friendly with regular check-ins so nothing gets lost.",
   },
   {
     question: "Can you work alongside our existing team?",

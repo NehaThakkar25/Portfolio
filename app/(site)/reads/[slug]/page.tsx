@@ -21,7 +21,24 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const post = await getRead(slug);
-  return { title: post ? `${post.title} | Neha Thakkar` : "Reads | Neha Thakkar" };
+  if (!post) return { title: "Reads | Neha Thakkar" };
+  return {
+    title: post.title,
+    description: post.excerpt,
+    alternates: { canonical: `/reads/${post.slug}` },
+    openGraph: {
+      type: "article",
+      title: post.title,
+      description: post.excerpt,
+      url: `/reads/${post.slug}`,
+      ...(post.coverUrl ? { images: [{ url: post.coverUrl }] } : {}),
+    },
+    twitter: {
+      card: post.coverUrl ? "summary_large_image" : "summary",
+      title: post.title,
+      description: post.excerpt,
+    },
+  };
 }
 
 export default async function PostPage({ params }: { params: Promise<{ slug: string }> }) {

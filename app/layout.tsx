@@ -20,9 +20,9 @@ const mulish = Mulish({
   display: "swap",
 });
 
-const title = "Neha | Experience & Product Designer";
+const title = "Neha Thakkar | Product Designer in India";
 const description =
-  "Product & UX designer turning complex ideas into simple, human experiences for startups and brands worldwide. Explore selected work and case studies.";
+  "A product designer in India crafting simple, human user experiences for startups and brands worldwide. Explore selected work and case studies.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),

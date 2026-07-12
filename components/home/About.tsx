@@ -80,7 +80,7 @@ export default function About() {
             <div ref={portraitRef} className="absolute inset-[-8%]">
               <Image
                 src="/neha-profile.png"
-                alt="Neha Thakkar"
+                alt="Neha Thakkar, product designer in India"
                 fill
                 priority
                 sizes="(max-width: 768px) 90vw, 40vw"

@@ -9,17 +9,19 @@ const RINGS = [
   { rf: 0.47, items: [3, 4, 5, 6, 7], speed: -0.0026 },
 ];
 
-// deterministic star positions (Math.sin hash) so SSR and client match
+// deterministic star positions (Math.sin hash). Values are rounded so the
+// server and browser JS engines serialize identical inline styles (no hydration mismatch).
 const rand = (n: number) => {
   const x = Math.sin(n * 99.13) * 43758.5453;
   return x - Math.floor(x);
 };
+const r2 = (v: number) => Math.round(v * 100) / 100;
 const STARS = Array.from({ length: 42 }, (_, i) => ({
-  x: rand(i) * 100,
-  y: rand(i + 41) * 100,
-  s: 1 + rand(i + 83) * 2,
-  delay: rand(i + 17) * 4,
-  dur: 2.6 + rand(i + 60) * 3,
+  x: r2(rand(i) * 100),
+  y: r2(rand(i + 41) * 100),
+  s: r2(1 + rand(i + 83) * 2),
+  delay: r2(rand(i + 17) * 4),
+  dur: r2(2.6 + rand(i + 60) * 3),
   rouge: i % 6 === 0,
 }));
 
@@ -27,7 +29,19 @@ export default function ServiceOrbit() {
   const wrap = useRef<HTMLDivElement>(null);
   const nodes = useRef<(HTMLButtonElement | null)[]>([]);
   const [sel, setSel] = useState<number | null>(null);
+  const [mounted, setMounted] = useState(false);
+  const [settled, setSettled] = useState(false);
   const st = useRef({ base: 0, drag: 0, dragging: false, lastX: 0, moved: 0 });
+
+  // staggered fade-in on load, then drop the stagger delay so interactions stay snappy
+  useEffect(() => {
+    const t1 = setTimeout(() => setMounted(true), 60);
+    const t2 = setTimeout(() => setSettled(true), 60 + offerings.length * 70 + 400);
+    return () => {
+      clearTimeout(t1);
+      clearTimeout(t2);
+    };
+  }, []);
 
   useEffect(() => {
     const el = wrap.current;
@@ -153,12 +167,14 @@ export default function ServiceOrbit() {
             nodes.current[i] = el;
           }}
           onClick={() => pick(i)}
-          className={`absolute left-0 top-0 whitespace-nowrap rounded-full border px-5 py-2.5 font-serif text-[17px] transition-[opacity,border-color,color,box-shadow,transform] duration-300 ${
-            sel !== null && sel !== i ? "opacity-20" : "opacity-100"
-          } ${
+          style={{
+            opacity: !mounted ? 0 : sel !== null && sel !== i ? 0.2 : 1,
+            transitionDelay: settled ? "0ms" : `${i * 70}ms`,
+          }}
+          className={`absolute left-0 top-0 whitespace-nowrap rounded-full border px-5 py-2.5 font-serif text-[17px] transition-[opacity,border-color,color,box-shadow] duration-300 ${
             sel === i
               ? "border-rouge text-white shadow-[0_0_30px_rgba(232,80,111,.45)]"
-              : "border-rouge/20 bg-[rgba(20,10,14,.55)] text-ink/85 shadow-[0_0_18px_rgba(232,80,111,.12)] hover:scale-105 hover:border-rouge hover:text-white hover:shadow-[0_0_28px_rgba(232,80,111,.4)]"
+              : "border-rouge/20 bg-[rgba(20,10,14,.55)] text-ink/85 shadow-[0_0_18px_rgba(232,80,111,.12)] hover:border-rouge hover:text-white hover:shadow-[0_0_28px_rgba(232,80,111,.4)]"
           }`}
         >
           {s.name}

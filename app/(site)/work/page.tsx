@@ -1,7 +1,11 @@
 import Link from "next/link";
 import { WORK_CATEGORIES, getCategoryCounts } from "@/lib/work";
 
-export const metadata = { title: "Work | Neha Thakkar" };
+export const metadata = {
+  title: "Product Design Portfolio in India | Neha Thakkar",
+  description:
+    "Case studies, UX audits, branding, and design systems. Browse a product design portfolio from India, built for startups and brands worldwide.",
+};
 export const revalidate = 60;
 
 const COVERS = [
@@ -19,13 +23,13 @@ export default async function WorkPage() {
   return (
     <section className="px-[6vw] pb-[16vh] pt-[22vh]">
       <header className="mb-16 max-w-3xl">
-        <span className="eyebrow">Work</span>
+        <span className="eyebrow">Portfolio</span>
         <h1 className="mt-5 font-serif text-[clamp(40px,7vw,84px)] font-normal leading-[0.95]">
           Selected <span className="italic text-rouge-soft">work</span>
         </h1>
         <p className="mt-6 text-[clamp(16px,2vw,20px)] leading-relaxed text-ink/65">
-          Explore by what you&rsquo;re looking for, from full case studies to audits, branding, and
-          experiments.
+          A product design portfolio from India, sorted by what you&rsquo;re after: case studies, UX
+          audits, branding, design systems, and experiments.
         </p>
       </header>
 
