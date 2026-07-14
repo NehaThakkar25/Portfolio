@@ -1,4 +1,5 @@
 import { defineField, defineType } from "sanity";
+import { WORK_CATEGORIES } from "@/lib/work-categories";
 
 export const project = defineType({
   name: "project",
@@ -18,14 +19,9 @@ export const project = defineType({
       title: "Category",
       type: "string",
       options: {
-        list: [
-          { title: "Case Studies", value: "case-studies" },
-          { title: "Product Design", value: "product-design" },
-          { title: "UX Audits", value: "ux-audits" },
-          { title: "Branding & Identity", value: "branding" },
-          { title: "Design Systems", value: "design-systems" },
-          { title: "Concepts & Explorations", value: "concepts" },
-        ],
+        // Generated from the single source of truth so the dropdown can never
+        // drift from the site's categories. value === slug on purpose.
+        list: WORK_CATEGORIES.map((c) => ({ title: c.title, value: c.slug })),
       },
       validation: (r) => r.required(),
     }),

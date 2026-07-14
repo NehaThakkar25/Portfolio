@@ -1,16 +1,10 @@
 import { client } from "@/sanity/lib/client";
 import { urlFor } from "@/sanity/lib/image";
+import { WORK_CATEGORIES, type WorkCategory } from "@/lib/work-categories";
 
-export type WorkCategory = { slug: string; title: string; description: string };
-
-export const WORK_CATEGORIES: WorkCategory[] = [
-  { slug: "case-studies", title: "Case Studies", description: "End-to-end deep dives, from the problem to the outcome." },
-  { slug: "product-design", title: "Product Design", description: "Shipped products and the thinking behind them." },
-  { slug: "ux-audits", title: "UX Audits", description: "Heuristic reviews that surface friction and the fixes." },
-  { slug: "branding", title: "Branding & Identity", description: "Visual identity and brand systems." },
-  { slug: "design-systems", title: "Design Systems", description: "Component libraries, tokens, and documentation." },
-  { slug: "concepts", title: "Concepts & Explorations", description: "Self-initiated redesigns and experiments." },
-];
+// Re-exported so existing `@/lib/work` imports keep working; the list itself
+// now lives in lib/work-categories.ts (shared with the Sanity schema).
+export { WORK_CATEGORIES, type WorkCategory };
 
 export const getCategory = (slug: string) => WORK_CATEGORIES.find((c) => c.slug === slug);
 
