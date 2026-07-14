@@ -90,3 +90,16 @@ export async function getReadSlugs(): Promise<string[]> {
   }
   return seedPosts.map((p) => p.slug);
 }
+
+/** Slugs plus Sanity's _updatedAt, for accurate <lastmod> in the sitemap. */
+export async function getReadSitemapEntries(): Promise<{ slug: string; updatedAt?: string }[]> {
+  try {
+    const rows = await client.fetch<{ slug: string; updatedAt: string }[]>(
+      `*[_type == "post" && defined(slug.current)]{ "slug": slug.current, "updatedAt": _updatedAt }`
+    );
+    if (rows?.length) return rows;
+  } catch {
+    // fall through to seed (no per-doc date; sitemap will use the build date)
+  }
+  return seedPosts.map((p) => ({ slug: p.slug }));
+}

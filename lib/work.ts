@@ -119,3 +119,17 @@ export async function getProjectParams(): Promise<{ category: string; slug: stri
     return [];
   }
 }
+
+/** Category, slug, and Sanity's _updatedAt, for accurate <lastmod> in the sitemap. */
+export async function getProjectSitemapEntries(): Promise<
+  { category: string; slug: string; updatedAt?: string }[]
+> {
+  try {
+    const rows = await client.fetch<{ category: string; slug: string; updatedAt: string }[]>(
+      `*[_type == "project" && defined(slug.current)]{ category, "slug": slug.current, "updatedAt": _updatedAt }`
+    );
+    return rows ?? [];
+  } catch {
+    return [];
+  }
+}
